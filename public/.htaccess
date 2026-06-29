@@ -1,13 +1,17 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  
-  # Excluir mailer/ e files/ do rewrite (endpoints PHP existentes)
-  RewriteCond %{REQUEST_URI} !^/mailer/
-  RewriteCond %{REQUEST_URI} !^/files/
-  
-  # Se nao for ficheiro ou diretorio real, redireciona para index.html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
+RewriteEngine On
+
+# ----- Regras para beniago.com -----
+RewriteCond %{HTTP_HOST} ^(www\.)?beniago\.com$ [NC]
+RewriteCond %{REQUEST_URI} !^/beniago/
+RewriteRule ^(.*)$ /beniago/$1 [L]
+
+# ----- SPA Fallback (React) para santibene.com -----
+# Excluir endpoints PHP, ficheiros estáticos e diretório beniago
+RewriteCond %{REQUEST_URI} !^/mailer/
+RewriteCond %{REQUEST_URI} !^/files/
+RewriteCond %{REQUEST_URI} !^/beniago/
+
+# Se não for ficheiro ou diretório real, redireciona para index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
