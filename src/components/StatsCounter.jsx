@@ -11,19 +11,22 @@ export default function StatsCounter() {
 						<div className="col-lg-3 col-md-6 col-sm-6">
 							<div className="counter-stat">
 								<i className="icofont-doctor"></i>
-								<span className="h3">500</span>+<p>{t('statsCounter.satisfiedCustomers')}</p>
+								<span className="h3">500</span>+
+								<p>{t('statsCounter.satisfiedCustomers')}</p>
 							</div>
 						</div>
 						<div className="col-lg-3 col-md-6 col-sm-6">
 							<div className="counter-stat">
 								<i className="icofont-flag"></i>
-								<span className="h3">12</span>+<p>{t('statsCounter.establishedPartnerships')}</p>
+								<span className="h3">12</span>+
+								<p>{t('statsCounter.establishedPartnerships')}</p>
 							</div>
 						</div>
 						<div className="col-lg-3 col-md-6 col-sm-6">
 							<div className="counter-stat">
 								<i className="icofont-badge"></i>
-								<span className="h3">2</span>+<p>{t('statsCounter.impactedCountries')}</p>
+								<span className="h3">2</span>+
+								<p>{t('statsCounter.impactedCountries')}</p>
 							</div>
 						</div>
 						<div className="col-lg-3 col-md-6 col-sm-6">

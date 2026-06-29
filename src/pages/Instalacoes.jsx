@@ -27,7 +27,10 @@ export default function Instalacoes() {
 			<Header />
 			<Breadcrumb
 				title={t('instalacoes.title')}
-				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('instalacoes.title') }]}
+				breadcrumbs={[
+					{ to: '/', label: t('breadcrumb.home') },
+					{ label: t('instalacoes.title') },
+				]}
 			/>
 
 			<section className="section about">

@@ -14,7 +14,10 @@ export default function Areas() {
 			<Header />
 			<Breadcrumb
 				title={t('areas.title')}
-				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('areas.title') }]}
+				breadcrumbs={[
+					{ to: '/', label: t('breadcrumb.home') },
+					{ label: t('areas.title') },
+				]}
 			/>
 
 			<section className="section awards p-0 mb-3 mt-5">
@@ -32,7 +35,8 @@ export default function Areas() {
 									img="/images/ramos/construction.png"
 									title={
 										<>
-											{t('areas.construcaoLine1')} <br /> {t('areas.construcaoLine2')}
+											{t('areas.construcaoLine1')} <br />{' '}
+											{t('areas.construcaoLine2')}
 										</>
 									}
 								/>
@@ -41,7 +45,8 @@ export default function Areas() {
 									img="/images/ramos/farmaceutica.png"
 									title={
 										<>
-											{t('areas.farmaceuticaLine1')} <br />{t('areas.farmaceuticaLine2')}
+											{t('areas.farmaceuticaLine1')} <br />
+											{t('areas.farmaceuticaLine2')}
 										</>
 									}
 								/>
@@ -50,7 +55,8 @@ export default function Areas() {
 									img="/images/ramos/it.png"
 									title={
 										<>
-											{t('areas.itLine1')} <br />{t('areas.itLine2')}
+											{t('areas.itLine1')} <br />
+											{t('areas.itLine2')}
 										</>
 									}
 								/>

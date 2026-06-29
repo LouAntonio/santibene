@@ -14,7 +14,10 @@ export default function Sobre() {
 			<Header />
 			<Breadcrumb
 				title={t('sobre.title')}
-				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('sobre.title') }]}
+				breadcrumbs={[
+					{ to: '/', label: t('breadcrumb.home') },
+					{ label: t('sobre.title') },
+				]}
 			/>
 
 			<section className="features">

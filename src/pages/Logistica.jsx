@@ -16,7 +16,10 @@ export default function Logistica() {
 			<Breadcrumb
 				title={t('logistica.title')}
 				bgImage="/images/about/logistica.jpg"
-				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('logistica.title') }]}
+				breadcrumbs={[
+					{ to: '/', label: t('breadcrumb.home') },
+					{ label: t('logistica.title') },
+				]}
 			/>
 
 			<section className="section department-single">
@@ -55,9 +58,18 @@ export default function Logistica() {
 						</div>
 						<div className="col-lg-8">
 							<div className="row">
-								<LogisticsCard img="/images/logistica/land.png" label={t('logistica.land')} />
-								<LogisticsCard img="/images/logistica/sea.png" label={t('logistica.sea')} />
-								<LogisticsCard img="/images/logistica/air.png" label={t('logistica.air')} />
+								<LogisticsCard
+									img="/images/logistica/land.png"
+									label={t('logistica.land')}
+								/>
+								<LogisticsCard
+									img="/images/logistica/sea.png"
+									label={t('logistica.sea')}
+								/>
+								<LogisticsCard
+									img="/images/logistica/air.png"
+									label={t('logistica.air')}
+								/>
 							</div>
 						</div>
 					</div>

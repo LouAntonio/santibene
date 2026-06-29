@@ -34,7 +34,8 @@ export default function Home() {
 										to="/sobre"
 										className="btn btn-main-2 btn-icon btn-round-full"
 									>
-										{t('home.knowMore')} <i className="icofont-simple-right ml-2"></i>
+										{t('home.knowMore')}{' '}
+										<i className="icofont-simple-right ml-2"></i>
 									</Link>
 								</div>
 							</div>

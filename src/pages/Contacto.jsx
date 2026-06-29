@@ -14,7 +14,10 @@ export default function Contacto() {
 			<Header />
 			<Breadcrumb
 				title={t('contacto.title')}
-				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('contacto.title') }]}
+				breadcrumbs={[
+					{ to: '/', label: t('breadcrumb.home') },
+					{ label: t('contacto.title') },
+				]}
 			/>
 
 			<section className="section contact-info pb-0">

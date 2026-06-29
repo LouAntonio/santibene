@@ -50,7 +50,11 @@ export default function ContactForm() {
 				body,
 			});
 			if (res.ok) {
-				setMsg({ show: true, text: t('contactForm.successMessage'), type: 'alert-success' });
+				setMsg({
+					show: true,
+					text: t('contactForm.successMessage'),
+					type: 'alert-success',
+				});
 				setFormData({ name: '', tel: '', email: '', subject: '', message: '' });
 				setRecaptchaToken(null);
 				setDisabled(true);
