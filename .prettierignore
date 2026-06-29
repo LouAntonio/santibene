@@ -1,0 +1,5 @@
+node_modules
+dist
+public/plugins
+public/files
+*.pdf

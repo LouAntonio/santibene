@@ -1,110 +1,185 @@
-import { useState } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha'
+import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '', tel: '', email: '', subject: '', message: ''
-  })
-  const [recaptchaToken, setRecaptchaToken] = useState(null)
-  const [disabled, setDisabled] = useState(true)
-  const [sending, setSending] = useState(false)
-  const [msg, setMsg] = useState({ show: false, text: '', type: '' })
+	const [formData, setFormData] = useState({
+		name: '',
+		tel: '',
+		email: '',
+		subject: '',
+		message: '',
+	});
+	const [recaptchaToken, setRecaptchaToken] = useState(null);
+	const [disabled, setDisabled] = useState(true);
+	const [sending, setSending] = useState(false);
+	const [msg, setMsg] = useState({ show: false, text: '', type: '' });
 
-  const handleChange = (e) => {
-    const updated = { ...formData, [e.target.name]: e.target.value }
-    setFormData(updated)
-    checkValidity(updated, recaptchaToken)
-  }
+	const handleChange = (e) => {
+		const updated = { ...formData, [e.target.name]: e.target.value };
+		setFormData(updated);
+		checkValidity(updated, recaptchaToken);
+	};
 
-  const handleRecaptcha = (token) => {
-    setRecaptchaToken(token)
-    checkValidity(formData, token)
-  }
+	const handleRecaptcha = (token) => {
+		setRecaptchaToken(token);
+		checkValidity(formData, token);
+	};
 
-  const checkValidity = (data, token) => {
-    const valid = data.name && data.tel && data.email && data.subject && data.message && token
-    setDisabled(!valid)
-  }
+	const checkValidity = (data, token) => {
+		const valid = data.name && data.tel && data.email && data.subject && data.message && token;
+		setDisabled(!valid);
+	};
 
-  const handleSubmit = async () => {
-    if (disabled || sending) return
-    setSending(true)
+	const handleSubmit = async () => {
+		if (disabled || sending) return;
+		setSending(true);
 
-    const body = new FormData()
-    body.append('name', formData.name)
-    body.append('tel', formData.tel)
-    body.append('email', formData.email)
-    body.append('subject', formData.subject)
-    body.append('message', formData.message)
-    body.append('g-recaptcha-response', recaptchaToken)
+		const body = new FormData();
+		body.append('name', formData.name);
+		body.append('tel', formData.tel);
+		body.append('email', formData.email);
+		body.append('subject', formData.subject);
+		body.append('message', formData.message);
+		body.append('g-recaptcha-response', recaptchaToken);
 
-    try {
-      const res = await fetch('https://santibene.com/mailer/contactoSantibene.php', {
-        method: 'POST',
-        body
-      })
-      if (res.ok) {
-        setMsg({ show: true, text: 'Sua mensagem foi enviada!', type: 'alert-success' })
-        setFormData({ name: '', tel: '', email: '', subject: '', message: '' })
-        setRecaptchaToken(null)
-        setDisabled(true)
-      } else {
-        const text = await res.text()
-        setMsg({ show: true, text: text || 'Erro ao enviar mensagem, tente mais tarde!', type: 'alert-danger' })
-      }
-    } catch {
-      setMsg({ show: true, text: 'Erro ao enviar mensagem, tente mais tarde!', type: 'alert-danger' })
-    }
-    setTimeout(() => setMsg({ show: false, text: '', type: '' }), 3000)
-    setSending(false)
-  }
+		try {
+			const res = await fetch('https://santibene.com/mailer/contactoSantibene.php', {
+				method: 'POST',
+				body,
+			});
+			if (res.ok) {
+				setMsg({ show: true, text: 'Sua mensagem foi enviada!', type: 'alert-success' });
+				setFormData({ name: '', tel: '', email: '', subject: '', message: '' });
+				setRecaptchaToken(null);
+				setDisabled(true);
+			} else {
+				const text = await res.text();
+				setMsg({
+					show: true,
+					text: text || 'Erro ao enviar mensagem, tente mais tarde!',
+					type: 'alert-danger',
+				});
+			}
+		} catch {
+			setMsg({
+				show: true,
+				text: 'Erro ao enviar mensagem, tente mais tarde!',
+				type: 'alert-danger',
+			});
+		}
+		setTimeout(() => setMsg({ show: false, text: '', type: '' }), 3000);
+		setSending(false);
+	};
 
-  return (
-    <form id="meuFormulario" className="contact__form" data-form>
-      <div className="row">
-        <div className="col-12">
-          <div className={`alert ${msg.type} contact__msg`} style={{ display: msg.show ? 'block' : 'none' }} role="alert">
-            {msg.text}
-          </div>
-        </div>
-      </div>
+	return (
+		<form id="meuFormulario" className="contact__form" data-form>
+			<div className="row">
+				<div className="col-12">
+					<div
+						className={`alert ${msg.type} contact__msg`}
+						style={{ display: msg.show ? 'block' : 'none' }}
+						role="alert"
+					>
+						{msg.text}
+					</div>
+				</div>
+			</div>
 
-      <div className="row">
-        <div className="col-lg-6">
-          <div className="form-group">
-            <input name="name" id="name" type="text" className="form-control" placeholder="Nome" required data-form-input value={formData.name} onChange={handleChange} />
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="form-group">
-            <input name="tel" id="tel" type="tel" className="form-control" placeholder="Telefone" required data-form-input value={formData.tel} onChange={handleChange} />
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="form-group">
-            <input name="email" id="email" type="email" className="form-control" placeholder="Endereço de Email" required data-form-input value={formData.email} onChange={handleChange} />
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="form-group">
-            <input name="subject" id="subject" type="text" className="form-control" placeholder="Assunto" required data-form-input value={formData.subject} onChange={handleChange} />
-          </div>
-        </div>
-      </div>
+			<div className="row">
+				<div className="col-lg-6">
+					<div className="form-group">
+						<input
+							name="name"
+							id="name"
+							type="text"
+							className="form-control"
+							placeholder="Nome"
+							required
+							data-form-input
+							value={formData.name}
+							onChange={handleChange}
+						/>
+					</div>
+				</div>
+				<div className="col-lg-6">
+					<div className="form-group">
+						<input
+							name="tel"
+							id="tel"
+							type="tel"
+							className="form-control"
+							placeholder="Telefone"
+							required
+							data-form-input
+							value={formData.tel}
+							onChange={handleChange}
+						/>
+					</div>
+				</div>
+				<div className="col-lg-6">
+					<div className="form-group">
+						<input
+							name="email"
+							id="email"
+							type="email"
+							className="form-control"
+							placeholder="Endereço de Email"
+							required
+							data-form-input
+							value={formData.email}
+							onChange={handleChange}
+						/>
+					</div>
+				</div>
+				<div className="col-lg-6">
+					<div className="form-group">
+						<input
+							name="subject"
+							id="subject"
+							type="text"
+							className="form-control"
+							placeholder="Assunto"
+							required
+							data-form-input
+							value={formData.subject}
+							onChange={handleChange}
+						/>
+					</div>
+				</div>
+			</div>
 
-      <div className="form-group-2 mb-4">
-        <textarea name="message" id="message" className="form-control" rows="8" placeholder="Mensagem" required data-form-input value={formData.message} onChange={handleChange}></textarea>
-      </div>
+			<div className="form-group-2 mb-4">
+				<textarea
+					name="message"
+					id="message"
+					className="form-control"
+					rows="8"
+					placeholder="Mensagem"
+					required
+					data-form-input
+					value={formData.message}
+					onChange={handleChange}
+				></textarea>
+			</div>
 
-      <div className="g-recaptcha">
-        <ReCAPTCHA sitekey="6LdnkuIrAAAAAInUpV9pby6Hwa3i3-wdqWOrhdL9" onChange={handleRecaptcha} />
-      </div>
+			<div className="g-recaptcha">
+				<ReCAPTCHA
+					sitekey="6LdnkuIrAAAAAInUpV9pby6Hwa3i3-wdqWOrhdL9"
+					onChange={handleRecaptcha}
+				/>
+			</div>
 
-      <div className="text-center">
-        <button type="button" className="btn btn-main btn-round-full" data-form-btn onClick={handleSubmit} disabled={disabled}>
-          {sending ? 'A enviar...' : 'Enviar'}
-        </button>
-      </div>
-    </form>
-  )
+			<div className="text-center">
+				<button
+					type="button"
+					className="btn btn-main btn-round-full"
+					data-form-btn
+					onClick={handleSubmit}
+					disabled={disabled}
+				>
+					{sending ? 'A enviar...' : 'Enviar'}
+				</button>
+			</div>
+		</form>
+	);
 }
