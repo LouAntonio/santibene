@@ -1,8 +1,11 @@
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaFarmaceutica() {
+	useDocumentTitle('Farmacêutica e Material Hospitalar | Santibene');
+
 	return (
 		<>
 			<Header />

@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Breadcrumb from '../components/Breadcrumb.jsx';
 import LogisticsCard from '../components/LogisticsCard.jsx';
 
 export default function Logistica() {
+	useDocumentTitle('Logística | Santibene');
+
 	return (
 		<>
 			<Header />

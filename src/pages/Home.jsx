@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import FeatureCard from '../components/FeatureCard.jsx';
@@ -7,6 +8,8 @@ import StatsCounter from '../components/StatsCounter.jsx';
 import OrcamentoForm from '../components/OrcamentoForm.jsx';
 
 export default function Home() {
+	useDocumentTitle('Santibene');
+
 	return (
 		<>
 			<Header />

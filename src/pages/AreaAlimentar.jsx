@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Breadcrumb, { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaAlimentar() {
+	useDocumentTitle('Alimentar | Santibene');
+
 	return (
 		<>
 			<Header />

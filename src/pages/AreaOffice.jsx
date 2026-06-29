@@ -1,8 +1,11 @@
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaOffice() {
+	useDocumentTitle('Material de Escritório | Santibene');
+
 	return (
 		<>
 			<Header />

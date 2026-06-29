@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import useScrollToTop from './hooks/useScrollToTop.js';
 import Home from './pages/Home.jsx';
 import Sobre from './pages/Sobre.jsx';
 import Contacto from './pages/Contacto.jsx';
@@ -12,6 +13,8 @@ import AreaOffice from './pages/AreaOffice.jsx';
 import AreaOfficeMob from './pages/AreaOfficeMob.jsx';
 
 function App() {
+	useScrollToTop();
+
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />

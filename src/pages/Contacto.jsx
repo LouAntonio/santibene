@@ -1,9 +1,12 @@
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Breadcrumb from '../components/Breadcrumb.jsx';
 import ContactForm from '../components/ContactForm.jsx';
 
 export default function Contacto() {
+	useDocumentTitle('Contacto | Santibene');
+
 	return (
 		<>
 			<Header />
