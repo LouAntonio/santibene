@@ -7,7 +7,7 @@ export default function Contacto() {
   return (
     <>
       <Header />
-      <Breadcrumb title="Contacto" />
+      <Breadcrumb title="Contacto" breadcrumbs={[{ to: '/', label: 'Home' }, { label: 'Contacto' }]} />
 
       <section className="section contact-info pb-0">
         <div className="container">

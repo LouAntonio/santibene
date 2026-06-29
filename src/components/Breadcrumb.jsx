@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom'
 
-export default function Breadcrumb({ title, bgImage }) {
+export default function Breadcrumb({ title, bgImage, breadcrumbs }) {
+  const heroStyle = bgImage
+    ? {
+        backgroundImage: `url(${bgImage})`,
+        backgroundPosition: '50% 50%',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+      }
+    : {}
+
   return (
-    <section className="page-title bg-1" style={bgImage ? { background: `url(${bgImage}) 50% 50% !important` } : {}}>
+    <section className="page-title bg-1" style={heroStyle}>
       <div className="overlay"></div>
       <div className="container">
         <div className="row">
           <div className="col-md-12">
             <div className="block text-center">
               <span className="text-white">{title}</span>
+              {breadcrumbs && <BreadcrumbNav items={breadcrumbs} />}
             </div>
           </div>
         </div>
@@ -25,7 +35,7 @@ export function BreadcrumbNav({ items }) {
           {item.to ? (
             <Link to={item.to} className="text-white">{item.label}</Link>
           ) : (
-            <a href="#" className="text-white-50">{item.label}</a>
+            <span className="text-white-50">{item.label}</span>
           )}
           {i < items.length - 1 && <span className="text-white"> / </span>}
         </li>

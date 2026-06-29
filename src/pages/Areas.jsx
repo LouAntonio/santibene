@@ -7,7 +7,7 @@ export default function Areas() {
   return (
     <>
       <Header />
-      <Breadcrumb title="Áreas de Negócio" />
+      <Breadcrumb title="Áreas de Negócio" breadcrumbs={[{ to: '/', label: 'Home' }, { label: 'Áreas de Negócio' }]} />
 
       <section className="section awards p-0 mb-3 mt-5">
         <div className="container">

@@ -7,7 +7,7 @@ export default function Sobre() {
   return (
     <>
       <Header />
-      <Breadcrumb title="Quem Somos" />
+      <Breadcrumb title="Quem Somos" breadcrumbs={[{ to: '/', label: 'Home' }, { label: 'Quem Somos' }]} />
 
       <section className="features">
         <div className="container">

@@ -8,7 +8,7 @@ export default function Logistica() {
   return (
     <>
       <Header />
-      <Breadcrumb title="Logística" />
+      <Breadcrumb title="Logística" bgImage="/images/about/logistica.jpg" breadcrumbs={[{ to: '/', label: 'Home' }, { label: 'Logística' }]} />
 
       <section className="section department-single">
         <div className="container">
