@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function ContactForm() {
+	const { t } = useTranslation();
 	const [formData, setFormData] = useState({
 		name: '',
 		tel: '',
@@ -48,7 +50,7 @@ export default function ContactForm() {
 				body,
 			});
 			if (res.ok) {
-				setMsg({ show: true, text: 'Sua mensagem foi enviada!', type: 'alert-success' });
+				setMsg({ show: true, text: t('contactForm.successMessage'), type: 'alert-success' });
 				setFormData({ name: '', tel: '', email: '', subject: '', message: '' });
 				setRecaptchaToken(null);
 				setDisabled(true);
@@ -56,14 +58,14 @@ export default function ContactForm() {
 				const text = await res.text();
 				setMsg({
 					show: true,
-					text: text || 'Erro ao enviar mensagem, tente mais tarde!',
+					text: text || t('contactForm.errorMessage'),
 					type: 'alert-danger',
 				});
 			}
 		} catch {
 			setMsg({
 				show: true,
-				text: 'Erro ao enviar mensagem, tente mais tarde!',
+				text: t('contactForm.errorMessage'),
 				type: 'alert-danger',
 			});
 		}
@@ -93,7 +95,7 @@ export default function ContactForm() {
 							id="name"
 							type="text"
 							className="form-control"
-							placeholder="Nome"
+							placeholder={t('contactForm.name')}
 							required
 							data-form-input
 							value={formData.name}
@@ -108,7 +110,7 @@ export default function ContactForm() {
 							id="tel"
 							type="tel"
 							className="form-control"
-							placeholder="Telefone"
+							placeholder={t('contactForm.phone')}
 							required
 							data-form-input
 							value={formData.tel}
@@ -123,7 +125,7 @@ export default function ContactForm() {
 							id="email"
 							type="email"
 							className="form-control"
-							placeholder="Endereço de Email"
+							placeholder={t('contactForm.email')}
 							required
 							data-form-input
 							value={formData.email}
@@ -138,7 +140,7 @@ export default function ContactForm() {
 							id="subject"
 							type="text"
 							className="form-control"
-							placeholder="Assunto"
+							placeholder={t('contactForm.subject')}
 							required
 							data-form-input
 							value={formData.subject}
@@ -154,7 +156,7 @@ export default function ContactForm() {
 					id="message"
 					className="form-control"
 					rows="8"
-					placeholder="Mensagem"
+					placeholder={t('contactForm.message')}
 					required
 					data-form-input
 					value={formData.message}
@@ -177,7 +179,7 @@ export default function ContactForm() {
 					onClick={handleSubmit}
 					disabled={disabled}
 				>
-					{sending ? 'A enviar...' : 'Enviar'}
+					{sending ? t('contactForm.sending') : t('contactForm.send')}
 				</button>
 			</div>
 		</form>

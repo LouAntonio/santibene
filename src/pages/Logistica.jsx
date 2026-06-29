@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -6,15 +7,16 @@ import Breadcrumb from '../components/Breadcrumb.jsx';
 import LogisticsCard from '../components/LogisticsCard.jsx';
 
 export default function Logistica() {
-	useDocumentTitle('Logística | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('logistica.pageTitle'));
 
 	return (
 		<>
 			<Header />
 			<Breadcrumb
-				title="Logística"
+				title={t('logistica.title')}
 				bgImage="/images/about/logistica.jpg"
-				breadcrumbs={[{ to: '/', label: 'Home' }, { label: 'Logística' }]}
+				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('logistica.title') }]}
 			/>
 
 			<section className="section department-single">
@@ -23,30 +25,18 @@ export default function Logistica() {
 						<div className="col-12">
 							<div className="department-content mt-5">
 								<div className="divider my-4"></div>
-								<p className="lead">Ar, Mar e Terra</p>
+								<p className="lead">{t('logistica.subtitle')}</p>
 								<p>
-									A Santibene Comércio e Serviços é uma empresa especializada em
-									importação e exportação de produtos, com forte atuação no
-									mercado nacional e internacional.
+									{t('logistica.paragraph1')}
 									<br />
-									Operamos com excelência em logística internacional, oferecendo
-									soluções completas para o transporte de mercadorias por vias
-									marítima, aérea e terrestre, garantindo agilidade, segurança e
-									eficiência em todas as etapas do processo.
+									{t('logistica.paragraph2')}
 									<br />
-									Nosso compromisso é conectar mercados, encurtar distâncias e
-									entregar resultados com qualidade e responsabilidade, sempre
-									respeitando as normas e exigências de cada país.
+									{t('logistica.paragraph3')}
 									<br />
-									Com uma equipe altamente capacitada e parceiros estratégicos ao
-									redor do mundo, a Santibene se posiciona como uma empresa
-									confiável e versátil para atender às demandas de comércio
-									exterior, independente do segmento.
+									{t('logistica.paragraph4')}
 									<br />
 								</p>
-								<p className="lead">
-									Santibene. Conectando o mundo aos seus negócios.
-								</p>
+								<p className="lead">{t('logistica.slogan')}</p>
 							</div>
 						</div>
 					</div>
@@ -57,17 +47,17 @@ export default function Logistica() {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-4">
-							<h3 className="title-color">Gostaria de Saber Mais? </h3>
+							<h3 className="title-color">{t('logistica.knowMore')}</h3>
 							<div className="divider mt-4 mb-5 mb-lg-0"></div>
 							<p>
-								<Link to="/contacto">Fale Connosco</Link>
+								<Link to="/contacto">{t('logistica.talkToUs')}</Link>
 							</p>
 						</div>
 						<div className="col-lg-8">
 							<div className="row">
-								<LogisticsCard img="/images/logistica/land.png" label="Terra" />
-								<LogisticsCard img="/images/logistica/sea.png" label="Mar" />
-								<LogisticsCard img="/images/logistica/air.png" label="Ar" />
+								<LogisticsCard img="/images/logistica/land.png" label={t('logistica.land')} />
+								<LogisticsCard img="/images/logistica/sea.png" label={t('logistica.sea')} />
+								<LogisticsCard img="/images/logistica/air.png" label={t('logistica.air')} />
 							</div>
 						</div>
 					</div>

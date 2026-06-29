@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -5,14 +6,15 @@ import Breadcrumb from '../components/Breadcrumb.jsx';
 import AreaCard from '../components/AreaCard.jsx';
 
 export default function Areas() {
-	useDocumentTitle('Áreas de Negócio | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areas.pageTitle'));
 
 	return (
 		<>
 			<Header />
 			<Breadcrumb
-				title="Áreas de Negócio"
-				breadcrumbs={[{ to: '/', label: 'Home' }, { label: 'Áreas de Negócio' }]}
+				title={t('areas.title')}
+				breadcrumbs={[{ to: '/', label: t('breadcrumb.home') }, { label: t('areas.title') }]}
 			/>
 
 			<section className="section awards p-0 mb-3 mt-5">
@@ -23,14 +25,14 @@ export default function Areas() {
 								<AreaCard
 									to="/areas/alimentar"
 									img="/images/ramos/a.png"
-									title="Alimentar"
+									title={t('areas.alimentar')}
 								/>
 								<AreaCard
 									to="/areas/construcao"
 									img="/images/ramos/construction.png"
 									title={
 										<>
-											Construção, Projectos <br /> e Equipamentos
+											{t('areas.construcaoLine1')} <br /> {t('areas.construcaoLine2')}
 										</>
 									}
 								/>
@@ -39,7 +41,7 @@ export default function Areas() {
 									img="/images/ramos/farmaceutica.png"
 									title={
 										<>
-											Farmacêutica <br />e Material Hospitalar
+											{t('areas.farmaceuticaLine1')} <br />{t('areas.farmaceuticaLine2')}
 										</>
 									}
 								/>
@@ -48,19 +50,19 @@ export default function Areas() {
 									img="/images/ramos/it.png"
 									title={
 										<>
-											Consumíveis <br />e Equipamentos Informáticos
+											{t('areas.itLine1')} <br />{t('areas.itLine2')}
 										</>
 									}
 								/>
 								<AreaCard
 									to="/areas/office"
 									img="/images/ramos/office.png"
-									title="Material de Escritório"
+									title={t('areas.office')}
 								/>
 								<AreaCard
 									to="/areas/office-mob"
 									img="/images/ramos/office2.jpg"
-									title="Mobiliário de Escritório"
+									title={t('areas.officeFurniture')}
 								/>
 							</div>
 						</div>

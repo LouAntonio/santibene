@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+	const { t } = useTranslation();
+
 	return (
 		<footer className="footer section gray-bg">
 			<div className="container">
@@ -23,28 +26,28 @@ export default function Footer() {
 								className="text-capitalize mb-3 text-center"
 								style={{ color: 'var(--cor-principal)' }}
 							>
-								Angola <span style={{ fontFamily: 'roboto' }}>&</span> Portugal
+								{t('footer.tagline')}
 							</h4>
 						</div>
 					</div>
 
 					<div className="col-lg-2 col-md-6 col-sm-12">
 						<div className="widget mb-5 mb-lg-0">
-							<h4 className="text-capitalize mb-3">Institucional</h4>
+							<h4 className="text-capitalize mb-3">{t('footer.institutional')}</h4>
 							<div className="divider mb-4"></div>
 
 							<ul className="list-unstyled footer-menu lh-35">
 								<li>
-									<Link to="/sobre">A Empresa</Link>
+									<Link to="/sobre">{t('footer.menuAbout')}</Link>
 								</li>
 								<li>
-									<Link to="/areas">Ramos</Link>
+									<Link to="/areas">{t('footer.menuAreas')}</Link>
 								</li>
 								<li>
-									<Link to="/logistica">Logística</Link>
+									<Link to="/logistica">{t('footer.menuLogistics')}</Link>
 								</li>
 								<li>
-									<Link to="/contacto">Contacto</Link>
+									<Link to="/contacto">{t('footer.menuContact')}</Link>
 								</li>
 							</ul>
 						</div>
@@ -52,13 +55,13 @@ export default function Footer() {
 
 					<div className="col-lg-3 col-md-6 col-sm-6">
 						<div className="widget widget-contact mb-5 mb-lg-0">
-							<h4 className="text-capitalize mb-3">Entre em Contacto</h4>
+							<h4 className="text-capitalize mb-3">{t('footer.contactUs')}</h4>
 							<div className="divider mb-4"></div>
 
 							<div className="footer-contact-block mb-4">
 								<div className="icon d-flex align-items-center">
 									<i className="icofont-email mr-3"></i>
-									<span className="h6 mb-0">Supporte 24/7</span>
+									<span className="h6 mb-0">{t('footer.support247')}</span>
 								</div>
 								<h4 className="mt-2">
 									<a href="mailto:geral@santibene.com">geral@santibene.com</a>
@@ -68,7 +71,7 @@ export default function Footer() {
 							<div className="footer-contact-block">
 								<div className="icon d-flex align-items-center">
 									<i className="icofont-support mr-3"></i>
-									<span className="h6 mb-0">Fale Connosco</span>
+									<span className="h6 mb-0">{t('footer.talkToUs')}</span>
 								</div>
 								<h4 className="mt-2">
 									<a href="tel:+351919294239">+351 919 294 239</a>
@@ -85,13 +88,13 @@ export default function Footer() {
 					<div className="row align-items-center justify-content-between">
 						<div className="col-lg-6">
 							<div className="copyright">
-								&copy; <Link to="/">Santibene Group</Link>{' '}
-								{new Date().getFullYear()} - Todos os Direitos Reservados
+								&copy; <Link to="/">{t('footer.copyright')}</Link>{' '}
+								{new Date().getFullYear()} - {t('footer.copyrightReserved')}
 							</div>
 						</div>
 						<div className="col-lg-6">
 							<div className="copyright text-right">
-								Desenvolvido por{' '}
+								{t('footer.developedBy')}{' '}
 								<a
 									href="https://www.louantonio.me/"
 									target="_blank"

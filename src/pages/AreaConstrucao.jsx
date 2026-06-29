@@ -1,10 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaConstrucao() {
-	useDocumentTitle('Construção, Projectos e Equipamentos | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areaConstrucao.pageTitle'));
 
 	return (
 		<>
@@ -15,14 +17,12 @@ export default function AreaConstrucao() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">
-									Construção, Projectos e Equipamentos
-								</span>
+								<span className="text-white">{t('areaConstrucao.title')}</span>
 								<BreadcrumbNav
 									items={[
-										{ to: '/', label: 'Home' },
-										{ to: '/areas', label: 'Áreas de negócio' },
-										{ label: 'Construção, Projectos e Equipamentos' },
+										{ to: '/', label: t('breadcrumb.home') },
+										{ to: '/areas', label: t('areas.title') },
+										{ label: t('areaConstrucao.title') },
 									]}
 								/>
 							</div>
@@ -36,37 +36,34 @@ export default function AreaConstrucao() {
 					<div className="row">
 						<div className="col-lg-8">
 							<div className="department-content mt-5">
-								<h3 className="text-md">Construção, Projectos e Equipamentos</h3>
+								<h3 className="text-md">{t('areaConstrucao.subtitle')}</h3>
 								<div className="divider my-4"></div>
 								<p>
-									<strong>Construção civil:</strong> Edificações, reformas e
-									infraestruturas, com execução profissional e cumprimento de
-									prazos. <br />
-									<strong>Fornecimento de equipamentos:</strong> Máquinas,
-									ferramentas e materiais de construção de alta qualidade. <br />
-									<strong>Gestão de projetos:</strong> Planejamento, execução e
-									fiscalização de obras, garantindo eficiência e conformidade com
-									normas. <br />
-									<strong>Consultoria técnica:</strong> Análise de viabilidade,
-									projetos personalizados e soluções sob medida para cada
-									necessidade.
+									<strong>{t('areaConstrucao.construction')}:</strong>{' '}
+									{t('areaConstrucao.constructionText')} <br />
+									<strong>{t('areaConstrucao.equipmentSupply')}:</strong>{' '}
+									{t('areaConstrucao.equipmentSupplyText')} <br />
+									<strong>{t('areaConstrucao.projectManagement')}:</strong>{' '}
+									{t('areaConstrucao.projectManagementText')} <br />
+									<strong>{t('areaConstrucao.technicalConsulting')}:</strong>{' '}
+									{t('areaConstrucao.technicalConsultingText')}
 								</p>
-								<h4>Benefícios</h4>
+								<h4>{t('areaConstrucao.benefits')}</h4>
 								<ul className="list-unstyled mt-4">
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Qualidade:</strong> Materiais e mão de obra
-										especializada;
+										<strong>{t('areaConstrucao.quality')}:</strong>{' '}
+										{t('areaConstrucao.qualityText')}
 									</li>
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Eficiência:</strong> Gestão profissional para
-										cumprimento de prazos e orçamentos;
+										<strong>{t('areaConstrucao.efficiency')}:</strong>{' '}
+										{t('areaConstrucao.efficiencyText')}
 									</li>
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Personalização:</strong> Projetos adaptados às
-										necessidades do cliente.
+										<strong>{t('areaConstrucao.customization')}:</strong>{' '}
+										{t('areaConstrucao.customizationText')}
 									</li>
 								</ul>
 							</div>

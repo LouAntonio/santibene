@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -8,6 +9,7 @@ import StatsCounter from '../components/StatsCounter.jsx';
 import OrcamentoForm from '../components/OrcamentoForm.jsx';
 
 export default function Home() {
+	const { t } = useTranslation();
 	useDocumentTitle('Santibene');
 
 	return (
@@ -24,15 +26,15 @@ export default function Home() {
 									className="text-uppercase text-sm letter-spacing"
 									style={{ fontWeight: 900 }}
 								>
-									Santibene Group
+									{t('home.bannerTitle')}
 								</span>
-								<h1 className="mb-3 mt-3">We supply your demands</h1>
+								<h1 className="mb-3 mt-3">{t('home.bannerSubtitle')}</h1>
 								<div className="btn-container">
 									<Link
 										to="/sobre"
 										className="btn btn-main-2 btn-icon btn-round-full"
 									>
-										Saiba Mais <i className="icofont-simple-right ml-2"></i>
+										{t('home.knowMore')} <i className="icofont-simple-right ml-2"></i>
 									</Link>
 								</div>
 							</div>
@@ -48,18 +50,18 @@ export default function Home() {
 							<div className="feature-block d-lg-flex">
 								<FeatureCard
 									icon="icofont-bullseye"
-									title="Missão"
-									text="A SANTIBENE tem como missão pensar em formas de solucionar, hoje, os desafios do amanhã. Buscamos mantermo-nos como referência no nosso mercado, primando pela inovação, solidez e eficiência dos serviços oferecidos."
+									title={t('home.missionTitle')}
+									text={t('home.missionText')}
 								/>
 								<FeatureCard
 									icon="icofont-sand-clock"
-									title="Visão"
-									text="Somos apaixonados por aquilo que fazemos. Os nossos clientes são como o bater do nosso coração. É por eles que procuramos sempre a excelência, mantendo o espírito de equipe e o rigor da nossa força de trabalho."
+									title={t('home.visionTitle')}
+									text={t('home.visionText')}
 								/>
 								<FeatureCard
 									icon="icofont-handshake-deal"
-									title="Valores"
-									text="Nossos valores estão fundamentados na ética, transparência e no comprometimento do Grupo."
+									title={t('home.valuesTitle')}
+									text={t('home.valuesText')}
 								/>
 							</div>
 						</div>
@@ -87,16 +89,8 @@ export default function Home() {
 						</div>
 						<div className="col-lg-4">
 							<div className="about-content pl-4 mt-4 mt-lg-0">
-								<h2 className="title-color">Sobre Nós</h2>
-								<p className="mt-4 mb-5">
-									A SANTIBENE é uma empresa jovem, dinâmica e versátil e procura
-									ir ao encontro das necessidades dos seus clientes. Atua no
-									mercado como o departamento de procurement dos seus clientes,
-									procurando sempre as melhores soluções ao melhor preço. Dispomos
-									de condições logísticas o que nos permite efetuar todo o
-									armazenamento e distribuição das encomendas, otimizando ao
-									máximo o transporte aéreo e contentorizado.
-								</p>
+								<h2 className="title-color">{t('home.aboutTitle')}</h2>
+								<p className="mt-4 mb-5">{t('home.aboutText')}</p>
 							</div>
 						</div>
 					</div>
@@ -110,7 +104,7 @@ export default function Home() {
 					<div className="row justify-content-center">
 						<div className="col-lg-7 text-center">
 							<div className="section-title">
-								<h2>Nosso portfólio inclui serviços como:</h2>
+								<h2>{t('home.portfolioTitle')}</h2>
 								<div className="divider mx-auto my-4"></div>
 							</div>
 						</div>
@@ -125,13 +119,9 @@ export default function Home() {
 								<div className="icon d-flex align-items-center col-12 justify-content-center">
 									<i className="icofont-food-basket text-lg"></i>
 								</div>
-								<h4 className="mt-3 mb-3">Alimentar</h4>
+								<h4 className="mt-3 mb-3">{t('home.serviceAlimentar')}</h4>
 								<div className="content">
-									<p className="mb-4">
-										Soluções completas na área alimentar: fornecimento,
-										catering, consultoria e produção de refeições com qualidade,
-										personalização e conveniência.
-									</p>
+									<p className="mb-4">{t('home.serviceAlimentarText')}</p>
 								</div>
 							</Link>
 						</div>
@@ -139,26 +129,26 @@ export default function Home() {
 						<ServiceCard
 							to="/areas/construcao"
 							icon="icofont-under-construction"
-							title="Construção, Projectos e Equipamentos"
-							text="Serviços completos em construção, equipamentos e projetos: qualidade, eficiência e soluções personalizadas para cada necessidade."
+							title={t('home.serviceConstrucao')}
+							text={t('home.serviceConstrucaoText')}
 						/>
 						<ServiceCard
 							to="/areas/farmaceutica"
 							icon="icofont-pills"
-							title="Farmacêutica e Material Hospitalar"
-							text="Com presença em angola, comercializamos a principais marcas de medicamentos, equipamentos e consumíveis na área da Saúde."
+							title={t('home.serviceFarmaceutica')}
+							text={t('home.serviceFarmaceuticaText')}
 						/>
 						<ServiceCard
 							to="/areas/it"
 							icon="icofont-printer"
-							title="Consumíveis e Equipamentos Informáticos"
-							text="Soluções seguras e sigilosas em TI: fornecimento, manutenção e descarte de equipamentos com total privacidade e conveniência."
+							title={t('home.serviceIT')}
+							text={t('home.serviceITText')}
 						/>
 						<ServiceCard
 							to="/areas/office"
 							icon="icofont-brain-alt"
-							title="Material de Escritório"
-							text="Comercializamos um vasto leque de consumíveis e oferecemos soluções chave na mão para o apetrechamento de salas para escritório."
+							title={t('home.serviceOffice')}
+							text={t('home.serviceOfficeText')}
 						/>
 
 						<div className="col-lg-4 col-md-6 col-sm-6">
@@ -167,10 +157,7 @@ export default function Home() {
 									<i className="icofont-info-circle text-lg"></i>
 								</div>
 								<div className="content">
-									<p className="mb-4">
-										Tudo isso para que não se preocupe em buscar serviços
-										noutros sítios
-									</p>
+									<p className="mb-4">{t('home.allInOneText')}</p>
 								</div>
 							</div>
 						</div>
@@ -201,8 +188,8 @@ export default function Home() {
 						</div>
 						<div className="col-lg-6 col-md-10">
 							<div className="appoinment-wrap mt-5 mt-lg-0">
-								<h2 className="mb-2 title-color">Pedido de Orçamento</h2>
-								<p className="mb-4">Precisa de um orçamento? Fale connosco!</p>
+								<h2 className="mb-2 title-color">{t('home.budgetTitle')}</h2>
+								<p className="mb-4">{t('home.budgetText')}</p>
 								<OrcamentoForm />
 							</div>
 						</div>
@@ -215,12 +202,9 @@ export default function Home() {
 					<div className="row justify-content-center">
 						<div className="col-lg-7">
 							<div className="section-title text-center">
-								<h2>Nossas Marcas</h2>
+								<h2>{t('home.ourBrands')}</h2>
 								<div className="divider mx-auto my-4"></div>
-								<p>
-									Com a ajuda de nossos parceiros, superamos nossos limites e
-									provemos serviços de melhor qualidade para si
-								</p>
+								<p>{t('home.brandsText')}</p>
 							</div>
 						</div>
 					</div>

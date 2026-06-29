@@ -11,6 +11,7 @@ import AreaFarmaceutica from './pages/AreaFarmaceutica.jsx';
 import AreaIT from './pages/AreaIT.jsx';
 import AreaOffice from './pages/AreaOffice.jsx';
 import AreaOfficeMob from './pages/AreaOfficeMob.jsx';
+import Instalacoes from './pages/Instalacoes.jsx';
 
 function App() {
 	useScrollToTop();
@@ -28,6 +29,7 @@ function App() {
 			<Route path="/areas/it" element={<AreaIT />} />
 			<Route path="/areas/office" element={<AreaOffice />} />
 			<Route path="/areas/office-mob" element={<AreaOfficeMob />} />
+			<Route path="/instalacoes" element={<Instalacoes />} />
 		</Routes>
 	);
 }

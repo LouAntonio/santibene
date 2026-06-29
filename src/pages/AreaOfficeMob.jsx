@@ -1,10 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaOfficeMob() {
-	useDocumentTitle('Mobiliário de Escritório | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areaOfficeMob.pageTitle'));
 
 	return (
 		<>
@@ -15,12 +17,12 @@ export default function AreaOfficeMob() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">Mobiliário de Escritório</span>
+								<span className="text-white">{t('areaOfficeMob.title')}</span>
 								<BreadcrumbNav
 									items={[
-										{ to: '/', label: 'Home' },
-										{ to: '/areas', label: 'Áreas de negócio' },
-										{ label: 'Mobiliário de Escritório' },
+										{ to: '/', label: t('breadcrumb.home') },
+										{ to: '/areas', label: t('areas.title') },
+										{ label: t('areaOfficeMob.title') },
 									]}
 								/>
 							</div>
@@ -34,17 +36,14 @@ export default function AreaOfficeMob() {
 					<div className="row">
 						<div className="col-lg-8">
 							<div className="department-content mt-5">
-								<h3 className="text-md">Mobiliário de Escritório</h3>
+								<h3 className="text-md">{t('areaOfficeMob.subtitle')}</h3>
 								<div className="divider my-4"></div>
 								<p>
-									Soluções completas para espaços corporativos, com foco em
-									ergonomia, funcionalidade e design. <br />
-									<strong>Fornecimento de mobiliário:</strong> Mesas, cadeiras,
-									armários e estações de trabalho com design moderno e materiais
-									duráveis. <br />
-									<strong>Projetos personalizados:</strong> Layouts adaptados ao
-									espaço disponível, promovendo conforto, produtividade e
-									aproveitamento inteligente. <br />
+									{t('areaOfficeMob.text')} <br />
+									<strong>{t('areaOfficeMob.furnitureSupply')}:</strong>{' '}
+									{t('areaOfficeMob.furnitureSupplyText')} <br />
+									<strong>{t('areaOfficeMob.customProjects')}:</strong>{' '}
+									{t('areaOfficeMob.customProjectsText')} <br />
 								</p>
 							</div>
 						</div>

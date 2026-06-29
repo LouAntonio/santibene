@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
 	const { pathname } = useLocation();
+	const { t, i18n } = useTranslation();
 
 	const isActive = (path) => {
 		if (path === '/') return pathname === '/';
@@ -32,33 +34,59 @@ export default function Header() {
 						<ul className="navbar-nav ml-auto">
 							<li className={`nav-item${isActive('/') ? ' active' : ''}`}>
 								<Link className="nav-link" to="/">
-									Início
+									{t('header.home')}
 								</Link>
 							</li>
 							<li className={`nav-item${isActive('/sobre') ? ' active' : ''}`}>
 								<Link className="nav-link" to="/sobre">
-									A Empresa
+									{t('header.about')}
 								</Link>
 							</li>
 							<li className={`nav-item${isActive('/areas') ? ' active' : ''}`}>
 								<Link className="nav-link" to="/areas">
-									Áreas de Negócio
+									{t('header.businessAreas')}
 								</Link>
 							</li>
 							<li className="nav-item">
 								<a className="nav-link" href="/files/catalogo.pdf" download>
-									Catálogo
+									{t('header.catalog')}
 								</a>
 							</li>
 							<li className={`nav-item${isActive('/logistica') ? ' active' : ''}`}>
 								<Link className="nav-link" to="/logistica">
-									Logística
+									{t('header.logistics')}
 								</Link>
+							</li>
+							<li className={`nav-item${isActive('/instalacoes') ? ' active' : ''}`}>
+								<Link className="nav-link" to="/instalacoes">
+									{t('header.facilities')}
+								</Link>
+							</li>
+							<li className="nav-item">
+								<a className="nav-link" href="/files/portfolio.pdf" download>
+									{t('header.portfolio')}
+								</a>
 							</li>
 							<li className={`nav-item${isActive('/contacto') ? ' active' : ''}`}>
 								<Link className="nav-link" to="/contacto">
-									Contacto
+									{t('header.contact')}
 								</Link>
+							</li>
+							<li className="nav-item ml-lg-3" style={{ borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '15px' }}>
+								<button
+									className={`btn btn-sm ${i18n.language === 'pt' ? 'btn-primary' : 'btn-outline-light'} mr-1`}
+									onClick={() => i18n.changeLanguage('pt')}
+									style={{ fontSize: '0.8rem' }}
+								>
+									PT
+								</button>
+								<button
+									className={`btn btn-sm ${i18n.language === 'en' ? 'btn-primary' : 'btn-outline-light'}`}
+									onClick={() => i18n.changeLanguage('en')}
+									style={{ fontSize: '0.8rem' }}
+								>
+									EN
+								</button>
 							</li>
 						</ul>
 					</div>

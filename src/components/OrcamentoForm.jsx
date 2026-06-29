@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function OrcamentoForm() {
+	const { t } = useTranslation();
 	const [formData, setFormData] = useState({
 		nome: '',
 		email: '',
@@ -49,16 +51,16 @@ export default function OrcamentoForm() {
 				body,
 			});
 			if (res.ok) {
-				alert('Seu pedido de Orçamento foi enviado!');
+				alert(t('orcamentoForm.successMessage'));
 				setFormData({ nome: '', email: '', tel: '', assunto: '', nif: '', mensagem: '' });
 				setRecaptchaToken(null);
 				setDisabled(true);
 			} else {
 				const text = await res.text();
-				alert(text || 'Erro no envio do pedido de Orçamento, tente mais tarde!');
+				alert(text || t('orcamentoForm.errorMessage'));
 			}
 		} catch {
-			alert('Erro no envio do pedido de Orçamento, tente mais tarde!');
+			alert(t('orcamentoForm.errorMessage'));
 		}
 		setSending(false);
 	};
@@ -72,7 +74,7 @@ export default function OrcamentoForm() {
 							name="nome"
 							type="text"
 							className="form-control"
-							placeholder="Nome"
+							placeholder={t('orcamentoForm.name')}
 							required
 							data-form-input
 							value={formData.nome}
@@ -86,7 +88,7 @@ export default function OrcamentoForm() {
 							name="email"
 							type="email"
 							className="form-control"
-							placeholder="Endereço de Email"
+							placeholder={t('orcamentoForm.email')}
 							required
 							data-form-input
 							value={formData.email}
@@ -100,7 +102,7 @@ export default function OrcamentoForm() {
 							name="tel"
 							type="tel"
 							className="form-control"
-							placeholder="Telefone"
+							placeholder={t('orcamentoForm.phone')}
 							required
 							data-form-input
 							value={formData.tel}
@@ -120,21 +122,23 @@ export default function OrcamentoForm() {
 							onChange={handleChange}
 						>
 							<option value="" disabled>
-								Escolha uma área
+								{t('orcamentoForm.chooseArea')}
 							</option>
-							<option value="Alimentar">Alimentar</option>
+							<option value="Alimentar">{t('orcamentoForm.optionAlimentar')}</option>
 							<option value="Construção, Projectos e Equipamentos">
-								Construção, Projectos e Equipamentos
+								{t('orcamentoForm.optionConstrucao')}
 							</option>
 							<option value="Farmacêutica e Material Hospitalar">
-								Farmacêutica e Material Hospitalar
+								{t('orcamentoForm.optionFarmaceutica')}
 							</option>
 							<option value="Consumíveis e Equipamentos Informáticos">
-								Consumíveis e Equipamentos Informáticos
+								{t('orcamentoForm.optionIT')}
 							</option>
-							<option value="Material de Escritório">Material de Escritório</option>
+							<option value="Material de Escritório">
+								{t('orcamentoForm.optionOffice')}
+							</option>
 							<option value="Mobiliário de Escritório">
-								Mobiliário de Escritório
+								{t('orcamentoForm.optionOfficeMob')}
 							</option>
 						</select>
 					</div>
@@ -145,7 +149,7 @@ export default function OrcamentoForm() {
 							name="nif"
 							type="text"
 							className="form-control"
-							placeholder="NIF"
+							placeholder={t('orcamentoForm.nif')}
 							required
 							data-form-input
 							value={formData.nif}
@@ -160,7 +164,7 @@ export default function OrcamentoForm() {
 					name="mensagem"
 					className="form-control"
 					rows="6"
-					placeholder="Descreva o pedido"
+					placeholder={t('orcamentoForm.message')}
 					value={formData.mensagem}
 					onChange={handleChange}
 				></textarea>
@@ -180,7 +184,7 @@ export default function OrcamentoForm() {
 				disabled={disabled}
 				className="btn btn-main-2 btn-round-full"
 			>
-				{sending ? 'A enviar...' : 'Enviar Pedido'}{' '}
+				{sending ? t('orcamentoForm.sending') : t('orcamentoForm.sendOrder')}{' '}
 				<i className="icofont-simple-right ml-2"></i>
 			</button>
 		</form>

@@ -1,10 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaOffice() {
-	useDocumentTitle('Material de Escritório | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areaOffice.pageTitle'));
 
 	return (
 		<>
@@ -15,12 +17,12 @@ export default function AreaOffice() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">Material de Escritório</span>
+								<span className="text-white">{t('areaOffice.title')}</span>
 								<BreadcrumbNav
 									items={[
-										{ to: '/', label: 'Home' },
-										{ to: '/areas', label: 'Áreas de negócio' },
-										{ label: 'Material de Escritório' },
+										{ to: '/', label: t('breadcrumb.home') },
+										{ to: '/areas', label: t('areas.title') },
+										{ label: t('areaOffice.title') },
 									]}
 								/>
 							</div>
@@ -34,13 +36,9 @@ export default function AreaOffice() {
 					<div className="row">
 						<div className="col-lg-8">
 							<div className="department-content mt-5">
-								<h3 className="text-md">Material de Escritório</h3>
+								<h3 className="text-md">{t('areaOffice.subtitle')}</h3>
 								<div className="divider my-4"></div>
-								<p>
-									Comercializamos um vasto leque de consumíveis e oferecemos
-									soluções "chave na mão" para o apetrechamento de salas para
-									escritório.
-								</p>
+								<p>{t('areaOffice.text')}</p>
 							</div>
 						</div>
 						<div className="col-lg-4">

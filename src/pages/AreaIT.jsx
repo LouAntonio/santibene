@@ -1,10 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaIT() {
-	useDocumentTitle('Consumíveis e Equipamentos Informáticos | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areaIT.pageTitle'));
 
 	return (
 		<>
@@ -15,14 +17,12 @@ export default function AreaIT() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">
-									Consumíveis e Equipamentos Informáticos
-								</span>
+								<span className="text-white">{t('areaIT.title')}</span>
 								<BreadcrumbNav
 									items={[
-										{ to: '/', label: 'Home' },
-										{ to: '/areas', label: 'Áreas de negócio' },
-										{ label: 'Consumíveis e Equipamentos Informáticos' },
+										{ to: '/', label: t('breadcrumb.home') },
+										{ to: '/areas', label: t('areas.title') },
+										{ label: t('areaIT.title') },
 									]}
 								/>
 							</div>
@@ -36,41 +36,36 @@ export default function AreaIT() {
 					<div className="row">
 						<div className="col-lg-8">
 							<div className="department-content mt-5">
-								<h3 className="text-md">Consumíveis e Equipamentos Informáticos</h3>
+								<h3 className="text-md">{t('areaIT.subtitle')}</h3>
 								<div className="divider my-4"></div>
 								<p>
-									<strong>Fornecimento de consumíveis:</strong> Cartuchos, toners,
-									papel, baterias e acessórios, com entregas discretas e
-									embalagens neutras. <br />
-									<strong>Venda/locação de equipamentos:</strong> Computadores,
-									impressoras, monitores e periféricos, com transações sigilosas e
-									entregas em locais privados. <br />
-									<strong>Manutenção e suporte técnico:</strong> Reparos,
-									atualizações e recuperação de dados, realizados com total
-									confidencialidade. <br />
-									<strong>Descarte seguro:</strong> Coleta e destruição de
-									equipamentos e dados sensíveis, com certificado confidencial.{' '}
-									<br />
-									<strong>Consultoria em TI:</strong> Análise de necessidades e
-									planejamento de infraestrutura, com reuniões privadas e
-									documentação protegida.
+									<strong>{t('areaIT.consumables')}:</strong>{' '}
+									{t('areaIT.consumablesText')} <br />
+									<strong>{t('areaIT.equipment')}:</strong>{' '}
+									{t('areaIT.equipmentText')} <br />
+									<strong>{t('areaIT.maintenance')}:</strong>{' '}
+									{t('areaIT.maintenanceText')} <br />
+									<strong>{t('areaIT.disposal')}:</strong>{' '}
+									{t('areaIT.disposalText')} <br />
+									<strong>{t('areaIT.consulting')}:</strong>{' '}
+									{t('areaIT.consultingText')}
 								</p>
-								<h4>Benefícios:</h4>
+								<h4>{t('areaIT.benefits')}:</h4>
 								<ul className="list-unstyled mt-4">
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Privacidade total:</strong> Transações e serviços
-										realizados de forma sigilosa.
+										<strong>{t('areaIT.privacy')}:</strong>{' '}
+										{t('areaIT.privacyText')}
 									</li>
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Conveniência:</strong> Entregas e suporte
-										personalizados.
+										<strong>{t('areaIT.convenience')}:</strong>{' '}
+										{t('areaIT.convenienceText')}
 									</li>
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Segurança:</strong> Métodos seguros para pagamento,
-										entrega e descarte.
+										<strong>{t('areaIT.security')}:</strong>{' '}
+										{t('areaIT.securityText')}
 									</li>
 								</ul>
 							</div>

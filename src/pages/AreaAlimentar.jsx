@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
-import Breadcrumb, { BreadcrumbNav } from '../components/Breadcrumb.jsx';
+import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaAlimentar() {
-	useDocumentTitle('Alimentar | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areaAlimentar.pageTitle'));
 
 	return (
 		<>
@@ -16,12 +17,12 @@ export default function AreaAlimentar() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">Alimentar</span>
+								<span className="text-white">{t('areaAlimentar.title')}</span>
 								<BreadcrumbNav
 									items={[
-										{ to: '/', label: 'Home' },
-										{ to: '/areas', label: 'Áreas de negócio' },
-										{ label: 'Alimentar' },
+										{ to: '/', label: t('breadcrumb.home') },
+										{ to: '/areas', label: t('areas.title') },
+										{ label: t('areaAlimentar.title') },
 									]}
 								/>
 							</div>
@@ -35,38 +36,34 @@ export default function AreaAlimentar() {
 					<div className="row">
 						<div className="col-lg-8">
 							<div className="department-content mt-5">
-								<h3 className="text-md">Alimentar</h3>
+								<h3 className="text-md">{t('areaAlimentar.subtitle')}</h3>
 								<div className="divider my-4"></div>
 								<p>
-									<strong>Fornecimento de alimentos:</strong> Distribuição de
-									produtos frescos, congelados ou secos, com foco em qualidade e
-									procedência. <br />
-									<strong>Catering e bufê:</strong> Serviços de alimentação para
-									eventos, com cardápios personalizados e montagem no local.{' '}
-									<br />
-									<strong>Consultoria em nutrição:</strong> Elaboração de
-									cardápios balanceados, planejamento dietético e treinamento para
-									equipes. <br />
-									<strong>Produção de refeições:</strong> Cozinha industrial para
-									empresas, escolas ou hospitais, com controle rigoroso de higiene
-									e nutrição.
+									<strong>{t('areaAlimentar.foodSupply')}:</strong>{' '}
+									{t('areaAlimentar.foodSupplyText')} <br />
+									<strong>{t('areaAlimentar.catering')}:</strong>{' '}
+									{t('areaAlimentar.cateringText')} <br />
+									<strong>{t('areaAlimentar.nutritionConsulting')}:</strong>{' '}
+									{t('areaAlimentar.nutritionConsultingText')} <br />
+									<strong>{t('areaAlimentar.mealProduction')}:</strong>{' '}
+									{t('areaAlimentar.mealProductionText')}
 								</p>
-								<h4>Benefícios:</h4>
+								<h4>{t('areaAlimentar.benefits')}:</h4>
 								<ul className="list-unstyled mt-4">
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Qualidade:</strong> Alimentos selecionados e
-										preparados com padrões rigorosos;
+										<strong>{t('areaAlimentar.quality')}:</strong>{' '}
+										{t('areaAlimentar.qualityText')}
 									</li>
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Personalização:</strong> Soluções adaptadas às
-										necessidades do cliente;
+										<strong>{t('areaAlimentar.customization')}:</strong>{' '}
+										{t('areaAlimentar.customizationText')}
 									</li>
 									<li>
 										<i className="icofont-check"></i>{' '}
-										<strong>Conveniência:</strong> Serviços completos, desde o
-										fornecimento até a execução.
+										<strong>{t('areaAlimentar.convenience')}:</strong>{' '}
+										{t('areaAlimentar.convenienceText')}
 									</li>
 								</ul>
 							</div>

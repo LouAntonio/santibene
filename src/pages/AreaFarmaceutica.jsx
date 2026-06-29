@@ -1,10 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import { BreadcrumbNav } from '../components/Breadcrumb.jsx';
 
 export default function AreaFarmaceutica() {
-	useDocumentTitle('Farmacêutica e Material Hospitalar | Santibene');
+	const { t } = useTranslation();
+	useDocumentTitle(t('areaFarmaceutica.pageTitle'));
 
 	return (
 		<>
@@ -15,14 +17,12 @@ export default function AreaFarmaceutica() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">
-									Farmacêutica e Material Hospitalar
-								</span>
+								<span className="text-white">{t('areaFarmaceutica.title')}</span>
 								<BreadcrumbNav
 									items={[
-										{ to: '/', label: 'Home' },
-										{ to: '/areas', label: 'Áreas de negócio' },
-										{ label: 'Farmacêutica e Material Hospitalar' },
+										{ to: '/', label: t('breadcrumb.home') },
+										{ to: '/areas', label: t('areas.title') },
+										{ label: t('areaFarmaceutica.title') },
 									]}
 								/>
 							</div>
@@ -36,12 +36,9 @@ export default function AreaFarmaceutica() {
 					<div className="row">
 						<div className="col-lg-8">
 							<div className="department-content mt-5">
-								<h3 className="text-md">Farmacêutica e Material Hospitalar</h3>
+								<h3 className="text-md">{t('areaFarmaceutica.subtitle')}</h3>
 								<div className="divider my-4"></div>
-								<p>
-									Com presença em angola, comercializamos a principais marcas de
-									medicamentos, equipamentos e consumíveis na área da Saúde.
-								</p>
+								<p>{t('areaFarmaceutica.text')}</p>
 							</div>
 						</div>
 						<div className="col-lg-4">
