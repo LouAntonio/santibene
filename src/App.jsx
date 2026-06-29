@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import useScrollToTop from './hooks/useScrollToTop.js';
+import LanguageSwitcher from './components/LanguageSwitcher.jsx';
 import Home from './pages/Home.jsx';
 import Sobre from './pages/Sobre.jsx';
 import Contacto from './pages/Contacto.jsx';
@@ -17,20 +18,23 @@ function App() {
 	useScrollToTop();
 
 	return (
-		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/sobre" element={<Sobre />} />
-			<Route path="/contacto" element={<Contacto />} />
-			<Route path="/logistica" element={<Logistica />} />
-			<Route path="/areas" element={<Areas />} />
-			<Route path="/areas/alimentar" element={<AreaAlimentar />} />
-			<Route path="/areas/construcao" element={<AreaConstrucao />} />
-			<Route path="/areas/farmaceutica" element={<AreaFarmaceutica />} />
-			<Route path="/areas/it" element={<AreaIT />} />
-			<Route path="/areas/office" element={<AreaOffice />} />
-			<Route path="/areas/office-mob" element={<AreaOfficeMob />} />
-			<Route path="/instalacoes" element={<Instalacoes />} />
-		</Routes>
+		<>
+			<Routes>
+					<Route path="/" element={<Home />} />
+				<Route path="/sobre" element={<Sobre />} />
+				<Route path="/contacto" element={<Contacto />} />
+				<Route path="/logistica" element={<Logistica />} />
+				<Route path="/areas" element={<Areas />} />
+				<Route path="/areas/alimentar" element={<AreaAlimentar />} />
+				<Route path="/areas/construcao" element={<AreaConstrucao />} />
+				<Route path="/areas/farmaceutica" element={<AreaFarmaceutica />} />
+				<Route path="/areas/it" element={<AreaIT />} />
+				<Route path="/areas/office" element={<AreaOffice />} />
+				<Route path="/areas/office-mob" element={<AreaOfficeMob />} />
+				<Route path="/instalacoes" element={<Instalacoes />} />
+			</Routes>
+			<LanguageSwitcher />
+		</>
 	);
 }
 

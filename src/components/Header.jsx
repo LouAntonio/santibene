@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Header() {
 	const { pathname } = useLocation();
-	const { t, i18n } = useTranslation();
+	const { t } = useTranslation();
 
 	const isActive = (path) => {
 		if (path === '/') return pathname === '/';
@@ -71,22 +71,6 @@ export default function Header() {
 								<Link className="nav-link" to="/contacto">
 									{t('header.contact')}
 								</Link>
-							</li>
-							<li className="nav-item ml-lg-3" style={{ borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '15px' }}>
-								<button
-									className={`btn btn-sm ${i18n.language === 'pt' ? 'btn-primary' : 'btn-outline-light'} mr-1`}
-									onClick={() => i18n.changeLanguage('pt')}
-									style={{ fontSize: '0.8rem' }}
-								>
-									PT
-								</button>
-								<button
-									className={`btn btn-sm ${i18n.language === 'en' ? 'btn-primary' : 'btn-outline-light'}`}
-									onClick={() => i18n.changeLanguage('en')}
-									style={{ fontSize: '0.8rem' }}
-								>
-									EN
-								</button>
 							</li>
 						</ul>
 					</div>
